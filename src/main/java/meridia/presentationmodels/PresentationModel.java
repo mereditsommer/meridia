@@ -8,6 +8,11 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
 
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+
+import java.io.File;
+
 public class PresentationModel {
 
     BufferedImage img;
@@ -26,5 +31,20 @@ public class PresentationModel {
     }
 
     public void upload() {
+
+
+    public File getFile() {
+        return file;
     }
+
+    public void setFile(File file) {
+        this.file = file;
+    }
+
+    private File file;
+    public void setFilter() {
+
+    }
+
+
 }
