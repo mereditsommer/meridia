@@ -12,7 +12,7 @@ public class AppStarter extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		PresentationModel pm = new PresentationModel();
-		Parent rootPanel = new ApplicationUI(pm);
+		Parent rootPanel = new ApplicationUI(pm, primaryStage);
 
 		Scene scene = new Scene(rootPanel);
 

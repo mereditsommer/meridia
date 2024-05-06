@@ -4,6 +4,7 @@ import javafx.scene.control.SplitPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import meridia.presentationmodels.PresentationModel;
 
 public class ApplicationUI extends BorderPane implements ViewMixin {
@@ -15,7 +16,14 @@ public class ApplicationUI extends BorderPane implements ViewMixin {
     private DownloadView downloadView;
     private SplitPane splitPane;
 
+    private Stage primaryStage;
+
     public ApplicationUI(PresentationModel model) {
+        this.model = model;
+        init();
+    }
+    public ApplicationUI(PresentationModel model, Stage primaryStage) {
+        this.primaryStage = primaryStage;
         this.model = model;
         init();
     }
@@ -27,7 +35,7 @@ public class ApplicationUI extends BorderPane implements ViewMixin {
 
     public void initializeControls() {
         uploadView = new UploadView(model);
-        filtersView = new FiltersView(model);
+        filtersView = new FiltersView(model, primaryStage);
         downloadView = new DownloadView(model);
         splitPane = initializeSplitPane();
     }
