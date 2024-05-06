@@ -1,14 +1,14 @@
 package meridia.utils;
 
-import java.awt.image.BufferedImage;
+import java.io.File;
 
 public class Filters {
-    public static void setBlackWhiteFilter(BufferedImage img) {
+    public static void setBlackWhiteFilter(File file) {
     }
 
-    public static void setGrayscaleFilter(BufferedImage img) {
+    public static void setGrayscaleFilter(File file) {
     }
 
-    public static void setPixelFilter(BufferedImage img) {
+    public static void setPixelFilter(File file) {
     }
 }

@@ -15,23 +15,23 @@ import java.io.File;
 
 public class PresentationModel {
 
-    BufferedImage img;
+    private File file;
 
     public PresentationModel() throws IOException {
-        URL filePath = getClass().getResource("../hongkong.jpg");
-        img = ImageIO.read(filePath);
+
     }
 
     public void setFilter(Filter filter) {
         switch (filter) {
-            case BW -> Filters.setBlackWhiteFilter(img);
-            case GRAY -> Filters.setGrayscaleFilter(img);
-            case PIXEL -> Filters.setPixelFilter(img);
+            case BW -> Filters.setBlackWhiteFilter(file);
+            case GRAY -> Filters.setGrayscaleFilter(file);
+            case PIXEL -> Filters.setPixelFilter(file);
         }
     }
 
     public void upload() {
 
+    }
 
     public File getFile() {
         return file;
@@ -40,11 +40,4 @@ public class PresentationModel {
     public void setFile(File file) {
         this.file = file;
     }
-
-    private File file;
-    public void setFilter() {
-
-    }
-
-
 }

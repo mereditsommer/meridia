@@ -22,6 +22,7 @@ public class ApplicationUI extends BorderPane implements ViewMixin {
         this.model = model;
         init();
     }
+
     public ApplicationUI(PresentationModel model, Stage primaryStage) {
         this.primaryStage = primaryStage;
         this.model = model;
@@ -34,8 +35,8 @@ public class ApplicationUI extends BorderPane implements ViewMixin {
     }
 
     public void initializeControls() {
-        uploadView = new UploadView(model);
-        filtersView = new FiltersView(model, primaryStage);
+        uploadView = new UploadView(model, primaryStage);
+        filtersView = new FiltersView(model);
         downloadView = new DownloadView(model);
         splitPane = initializeSplitPane();
     }
