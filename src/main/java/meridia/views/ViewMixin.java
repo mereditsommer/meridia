@@ -1,6 +1,5 @@
 package meridia.views;
 
-/* aus Vorlesung */
 public interface ViewMixin {
     default void init() {
         initializeSelf();

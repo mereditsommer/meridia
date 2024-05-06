@@ -7,10 +7,12 @@ import javafx.stage.Stage;
 import meridia.presentationmodels.PresentationModel;
 import meridia.views.ApplicationUI;
 
+import java.io.IOException;
+
 public class AppStarter extends Application {
 
 	@Override
-	public void start(Stage primaryStage) {
+	public void start(Stage primaryStage) throws IOException {
 		PresentationModel pm = new PresentationModel();
 		Parent rootPanel = new ApplicationUI(pm);
 

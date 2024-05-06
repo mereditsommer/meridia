@@ -3,6 +3,7 @@ package meridia.views;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import meridia.presentationmodels.PresentationModel;
+import meridia.utils.Filter;
 
 public class FiltersView extends VBox implements ViewMixin {
     private final PresentationModel model;
@@ -28,7 +29,9 @@ public class FiltersView extends VBox implements ViewMixin {
         blackWhiteButton.setDisable(true);
         blackWhiteButton.setText("Black and White");
         grayButton.setDisable(true);
+        grayButton.setText("Grayscale");
         pixelButton.setDisable(true);
+        pixelButton.setText("Pixelated");
 
         this.setSpacing(32);
         this.getChildren().addAll(blackWhiteButton, grayButton, pixelButton);
@@ -36,8 +39,8 @@ public class FiltersView extends VBox implements ViewMixin {
 
     @Override
     public void setupEventHandlers() {
-        blackWhiteButton.setOnMouseClicked(e -> model.setFilter());
-        blackWhiteButton.setOnMouseClicked(e -> model.setFilter());
-        blackWhiteButton.setOnMouseClicked(e -> model.setFilter());
+        blackWhiteButton.setOnMouseClicked(e -> model.setFilter(Filter.BW));
+        grayButton.setOnMouseClicked(e -> model.setFilter(Filter.GRAY));
+        pixelButton.setOnMouseClicked(e -> model.setFilter(Filter.PIXEL));
     }
 }

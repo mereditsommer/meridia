@@ -1,11 +1,13 @@
 package meridia.views;
 
+import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import meridia.presentationmodels.PresentationModel;
 
 public class UploadView extends GridPane implements ViewMixin {
 
     private final PresentationModel model;
+    private Button uploadButton;
 
     public UploadView(PresentationModel model) {
         this.model = model;
@@ -14,19 +16,18 @@ public class UploadView extends GridPane implements ViewMixin {
 
     @Override
     public void initializeControls() {
+        uploadButton = new Button();
+        this.getChildren().add(uploadButton);
     }
 
     @Override
     public void layoutControls() {
         getStyleClass().add("header-view");
-    }
-
-    /* Hilfe zu maxTopSpeed- & birdAmount-Bindings von Samuel Lupica */
-    @Override
-    public void setupBindings() {
+        uploadButton.setText("Upload your Image");
     }
 
     @Override
-    public void setupValueChangedListeners() {
+    public void setupEventHandlers() {
+        uploadButton.setOnMouseClicked(e -> model.upload());
     }
 }
