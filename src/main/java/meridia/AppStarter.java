@@ -23,7 +23,6 @@ public class AppStarter extends Application {
 		primaryStage.setScene(scene);
 		primaryStage.setWidth(1024);
 		primaryStage.setHeight(666);
-
 		primaryStage.show();
 	}
 

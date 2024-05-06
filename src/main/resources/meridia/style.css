@@ -17,6 +17,19 @@
     -text-color: black;
 }
 
+.main-padding{
+    -fx-padding: 0px 50px;
+}
+
+.header {
+
+    -fx-min-width: 1024px;
+    -fx-min-height: 70px;
+    -fx-background-color: grey;
+
+}
+
+
 .label {
     -fx-text-fill: -secondary-color;
     -fx-min-width: 150px;
@@ -61,20 +74,21 @@
     -fx-border-radius: 3px;
 }
 
-.header-view {
-    -fx-padding: 32px 32px 0 32px;
-    -fx-min-width: 450px;
+.image-view {
+
+    -fx-min-width: 700px;
     -fx-max-width: 950px;
+    -fx-background-color: red;
 }
 
-.header-view .label, .overview-view .label {
+.image-view .label, .overview-view .label {
     -fx-text-fill: -text-color;
     -fx-min-width: 150px;
     -fx-pref-width: 300px;
     -fx-padding: 0 0 16px 0;
 }
 
-.header-view .heading {
+.image-view .heading {
     -fx-font-size: 28px;
     -fx-font-weight: bold;
 }
@@ -83,7 +97,7 @@
     -fx-padding: 32px 32px 0 32px;
 }
 
-.header-view .heading, .overview-view .heading {
+.image-view .heading, .overview-view .heading {
     -fx-pref-width: 500px;
     -fx-font-size: 32px;
     -fx-font-weight: bold;
@@ -99,6 +113,7 @@
 }
 
 .toolbar-view {
+    -fx-min-width: 324;
     -fx-padding: 32px;
     -fx-background-color: -accent-color-blue;
 }

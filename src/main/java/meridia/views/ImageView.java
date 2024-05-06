@@ -1,26 +1,34 @@
 package meridia.views;
 
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import meridia.presentationmodels.PresentationModel;
 
+import java.awt.Image;
+
 import static meridia.filesystem.FilesystemAccess.readFile;
 
-public class UploadView extends GridPane implements ViewMixin {
+public class ImageView extends GridPane implements ViewMixin {
 
     private final PresentationModel model;
+    private VBox col;
+    private Label mainTitle;
+    private Label subTitle;
+    private ImageView imageBox;
     private Button uploadButton;
     private Stage primaryStage;
     final FileChooser fileChooser = new FileChooser();
 
-    public UploadView(PresentationModel model) {
+    public ImageView(PresentationModel model) {
         this.model = model;
         init();
     }
 
-    public UploadView(PresentationModel model, Stage primaryStage) {
+    public ImageView(PresentationModel model, Stage primaryStage) {
         this.model = model;
         this.primaryStage = primaryStage;
         init();
@@ -28,14 +36,18 @@ public class UploadView extends GridPane implements ViewMixin {
 
     @Override
     public void initializeControls() {
+        mainTitle = new Label("Image Processor");
+        subTitle = new Label("Start by adding an image for processing.");
+       // imageBox = new ImageView();
         uploadButton = new Button();
-        this.getChildren().add(uploadButton);
     }
 
     @Override
     public void layoutControls() {
-        getStyleClass().add("header-view");
+        col = new VBox(mainTitle,subTitle,uploadButton);
+        getStyleClass().add("image-view");
         uploadButton.setText("Upload your Image");
+        getChildren().add(col);
     }
 
     @Override

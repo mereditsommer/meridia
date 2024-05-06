@@ -2,7 +2,7 @@ package meridia.views;
 
 import javafx.scene.control.SplitPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Priority;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import meridia.presentationmodels.PresentationModel;
@@ -10,8 +10,11 @@ import meridia.presentationmodels.PresentationModel;
 public class ApplicationUI extends BorderPane implements ViewMixin {
 
     private final PresentationModel model;
+    private Header header;
+    private VBox mainView;
+    private HBox splitView;
 
-    private UploadView uploadView;
+    private ImageView imageView;
     private FiltersView filtersView;
     private DownloadView downloadView;
     private SplitPane splitPane;
@@ -35,23 +38,32 @@ public class ApplicationUI extends BorderPane implements ViewMixin {
     }
 
     public void initializeControls() {
-        uploadView = new UploadView(model, primaryStage);
+        header = new Header(model);
+        imageView = new ImageView(model, primaryStage);
         filtersView = new FiltersView(model);
-        downloadView = new DownloadView(model);
-        splitPane = initializeSplitPane();
+        splitView = new HBox(imageView, filtersView);
+        mainView = new VBox(header, splitView);
+
+
+
+       // downloadView = new DownloadView(model);
+       // splitPane = initializeSplitPane();
     }
 
     public void layoutControls() {
-        VBox.setVgrow(splitPane, Priority.ALWAYS);
+        getChildren().add(mainView);
+      //  VBox.setVgrow(splitPane, Priority.ALWAYS);
 
-        setCenter(splitPane);
+     //   setCenter(splitPane);
     }
 
     private SplitPane initializeSplitPane() {
+
         SplitPane splitPane = new SplitPane();
 
-        splitPane.getItems().addAll(uploadView, filtersView, downloadView);
-        splitPane.setDividerPositions(0.5f);
+        splitPane.getItems().addAll(imageView, filtersView);
+        splitPane.setDividerPositions(0.7f);
+
 
         return splitPane;
     }
