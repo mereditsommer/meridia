@@ -49,5 +49,6 @@ public class FiltersView extends VBox implements ViewMixin {
         blackWhiteButton.setOnMouseClicked(e -> model.setFilter(Filter.BW));
         grayButton.setOnMouseClicked(e -> model.setFilter(Filter.GRAY));
         pixelButton.setOnMouseClicked(e -> model.setFilter(Filter.PIXEL));
+        originalButton.setOnMouseClicked(e -> model.setFilter(Filter.NONE));
     }
 }

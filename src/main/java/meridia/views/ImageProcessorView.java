@@ -115,4 +115,8 @@ public class ImageProcessorView extends GridPane implements ViewMixin {
         URL imageURL = FilesystemAccess.class.getResource("/meridia." + format);
         imageView.setImage(new Image(String.valueOf(imageURL)));
     }
+
+    public void resetImage() {
+        imageView.setImage(new Image(String.valueOf(model.getFile().toURI())));
+    }
 }

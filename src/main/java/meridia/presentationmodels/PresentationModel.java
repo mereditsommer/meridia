@@ -14,6 +14,10 @@ public class PresentationModel {
     private Filter activeFilter;
 
     public void setFilter(Filter filter) {
+        if (filter == Filter.NONE) {
+            this.imageProcessorView.resetImage();
+            return;
+        }
         try {
             switch (filter) {
                 case BW -> Filters.setBlackWhiteFilter(file);
