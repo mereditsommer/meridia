@@ -14,7 +14,7 @@ public class ApplicationUI extends BorderPane implements ViewMixin {
     private VBox mainView;
     private HBox splitView;
 
-    private ImageView imageView;
+    private ImageProcessorView imageProcessorView;
     private FiltersView filtersView;
     private DownloadView downloadView;
     private SplitPane splitPane;
@@ -39,9 +39,9 @@ public class ApplicationUI extends BorderPane implements ViewMixin {
 
     public void initializeControls() {
         header = new Header(model);
-        imageView = new ImageView(model, primaryStage);
+        imageProcessorView = new ImageProcessorView(model, primaryStage);
         filtersView = new FiltersView(model);
-        splitView = new HBox(imageView, filtersView);
+        splitView = new HBox(imageProcessorView, filtersView);
         mainView = new VBox(header, splitView);
 
 
@@ -61,7 +61,7 @@ public class ApplicationUI extends BorderPane implements ViewMixin {
 
         SplitPane splitPane = new SplitPane();
 
-        splitPane.getItems().addAll(imageView, filtersView);
+        splitPane.getItems().addAll(imageProcessorView, filtersView);
         splitPane.setDividerPositions(0.7f);
 
 
