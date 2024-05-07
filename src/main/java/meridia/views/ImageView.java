@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 import meridia.presentationmodels.PresentationModel;
 
 import java.awt.Image;
+import java.io.File;
 
 import static meridia.filesystem.FilesystemAccess.readFile;
 
@@ -18,8 +19,11 @@ public class ImageView extends GridPane implements ViewMixin {
     private VBox col;
     private Label mainTitle;
     private Label subTitle;
+  //  private Image image = new Image(getClass().getResourceAsStream("placeholder.png"));
     private ImageView imageBox;
     private Button uploadButton;
+    private Button clearButton;
+    private Button downloadButton;
     private Stage primaryStage;
     final FileChooser fileChooser = new FileChooser();
 
@@ -38,6 +42,7 @@ public class ImageView extends GridPane implements ViewMixin {
     public void initializeControls() {
         mainTitle = new Label("Image Processor");
         subTitle = new Label("Start by adding an image for processing.");
+
        // imageBox = new ImageView();
         uploadButton = new Button();
     }

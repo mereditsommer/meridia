@@ -11,6 +11,7 @@ public interface ViewMixin {
     }
 
     default void initializeSelf() {
+
     }
 
     void initializeControls();
