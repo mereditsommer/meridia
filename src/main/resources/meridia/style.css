@@ -78,7 +78,7 @@
 
     -fx-min-width: 700px;
     -fx-max-width: 950px;
-    -fx-background-color: red;
+    -fx-background-color: fcf8ff;
 }
 
 .image-view .label, .overview-view .label {
