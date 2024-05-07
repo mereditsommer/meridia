@@ -111,7 +111,7 @@ public class Filters {
             case BW -> "bw";
             case GRAY -> "gray";
             case PIXEL -> "pixel";
-            case NONE -> null;
+            case NONE -> "original";
         };
     }
 }

@@ -16,6 +16,7 @@ public class PresentationModel {
     public void setFilter(Filter filter) {
         if (filter == Filter.NONE) {
             this.imageProcessorView.resetImage();
+            this.activeFilter = filter;
             return;
         }
         try {
