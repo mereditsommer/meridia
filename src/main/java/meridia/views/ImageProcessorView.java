@@ -63,9 +63,9 @@ public class ImageProcessorView extends GridPane implements ViewMixin {
         placeholder = new Image("img/placeholder.jpg");
         imageView = new ImageView(placeholder);
         imageView.getStyleClass().add("imageStyle");
-        imageView.setFitWidth(700);
-        imageView.setFitHeight(428);
         imageView.setPreserveRatio(true);
+        imageView.setFitHeight(350);
+
 
         imageArea = new StackPane();
         imageArea.getChildren().addAll(imageView,uploadButton);
