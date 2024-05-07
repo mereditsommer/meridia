@@ -3,17 +3,18 @@ import javafx.embed.swing.SwingFXUtils;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import meridia.presentationmodels.PresentationModel;
+import meridia.utils.Filters;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
+import java.net.URL;
 
 
 public class FilesystemAccess {
-    private static Class className  =  FilesystemAccess.class;
+    //private static URL imageURL  = FilesystemAccess.class.getResource("/meridia.*");
     static final FileChooser fileChooser = new FileChooser();
     private static Desktop desktop = Desktop.getDesktop();
     public static File readFile(Stage stage){
@@ -28,11 +29,13 @@ public class FilesystemAccess {
             FileChooser fileChooser = new FileChooser();
             fileChooser.setTitle("Save Image");
             File file = fileChooser.showSaveDialog(stage);
+            File fileOld = model.getFile();
+            String format = fileOld.getName().split("\\.")[1];
+            URL imageURL = FilesystemAccess.class.getResource("/meridia." + format);
             if (file != null) {
                 try {
-                    BufferedImage buffer = ImageIO.read(
-                            FilesystemAccess.className.getResource("/meredia.png"));
-                    ImageIO.write(buffer, "png", file);
+                    BufferedImage buffer = ImageIO.read(imageURL);
+                    ImageIO.write(buffer, format, file);
                 } catch (IOException ex) {
                     System.out.println(ex.getMessage());
                 }
