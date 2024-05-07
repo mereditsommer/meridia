@@ -31,6 +31,8 @@ public class FiltersView extends VBox implements ViewMixin {
     @Override
     public void layoutControls() {
         getStyleClass().add("toolbar-view");
+        originalButton.getStyleClass().add("main-button");
+        originalButton.getStyleClass().add("filter-button");
         blackWhiteButton.getStyleClass().add("main-button");
         grayButton.getStyleClass().add("main-button");
         pixelButton.getStyleClass().add("main-button");
@@ -39,7 +41,7 @@ public class FiltersView extends VBox implements ViewMixin {
         pixelButton.getStyleClass().add("filter-button");
 
         this.setSpacing(18);
-        this.getChildren().addAll(label, blackWhiteButton, grayButton, pixelButton);
+        this.getChildren().addAll(label, originalButton, blackWhiteButton, grayButton, pixelButton);
     }
 
     @Override
