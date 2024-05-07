@@ -11,8 +11,12 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import meridia.filesystem.FilesystemAccess;
 import meridia.presentationmodels.PresentationModel;
 
+import java.net.URL;
+
+import static meridia.filesystem.FilesystemAccess.downloadImage;
 import static meridia.filesystem.FilesystemAccess.readFile;
 
 public class ImageProcessorView extends GridPane implements ViewMixin {
@@ -23,7 +27,6 @@ public class ImageProcessorView extends GridPane implements ViewMixin {
     private Label subTitle;
     private Image placeholder ;
     private ImageView imageView;
-    private ImageProcessorView imageBox;
     private Button uploadButton;
     private Button clearButton;
     private Button downloadButton;
@@ -56,13 +59,14 @@ public class ImageProcessorView extends GridPane implements ViewMixin {
         placeholder = new Image("img/placeholder.jpg");
         imageView = new ImageView(placeholder);
         imageView.getStyleClass().add("imageStyle");
+        imageView.setFitWidth(700);
+        imageView.setFitHeight(428);
+        imageView.setPreserveRatio(true);
 
         imageArea = new StackPane();
         imageArea.getChildren().addAll(imageView,uploadButton);
         StackPane.setAlignment(uploadButton, Pos.CENTER);
         imageArea.setAlignment(Pos.CENTER);
-
-
 
         tools = new HBox(clearButton,downloadButton);
         tools.setAlignment(Pos.CENTER);
@@ -89,6 +93,13 @@ public class ImageProcessorView extends GridPane implements ViewMixin {
 
     @Override
     public void setupEventHandlers() {
-        uploadButton.setOnMouseClicked(e -> model.setFile(readFile(this.primaryStage)));
+        uploadButton.setOnMouseClicked(e -> {
+            model.setFile(readFile(this.primaryStage));
+            if (model.getFile() != null) {
+                imageView.setImage(new Image(String.valueOf(model.getFile().toURI())));
+            }
+        });
+        downloadButton.setOnMouseClicked(e -> downloadImage(this.primaryStage, model));
+        clearButton.setOnMouseClicked(e -> imageView.setImage(placeholder));
     }
 }
