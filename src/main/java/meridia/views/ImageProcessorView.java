@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 import meridia.filesystem.FilesystemAccess;
 import meridia.presentationmodels.PresentationModel;
 
+import java.io.File;
 import java.net.URL;
 
 import static meridia.filesystem.FilesystemAccess.downloadImage;
@@ -39,11 +40,13 @@ public class ImageProcessorView extends GridPane implements ViewMixin {
 
     public ImageProcessorView(PresentationModel model) {
         this.model = model;
+        model.setImageProcessorView(this);
         init();
     }
 
     public ImageProcessorView(PresentationModel model, Stage primaryStage) {
         this.model = model;
+        model.setImageProcessorView(this);
         this.primaryStage = primaryStage;
         init();
     }
@@ -101,5 +104,11 @@ public class ImageProcessorView extends GridPane implements ViewMixin {
         });
         downloadButton.setOnMouseClicked(e -> downloadImage(this.primaryStage, model));
         clearButton.setOnMouseClicked(e -> imageView.setImage(placeholder));
+    }
+
+    public void setImageWithFilter() {
+        String format = model.getFile().getName().split("\\.")[1];
+        URL imageURL = FilesystemAccess.class.getResource("/meridia." + format);
+        imageView.setImage(new Image(String.valueOf(imageURL)));
     }
 }

@@ -2,21 +2,24 @@ package meridia.presentationmodels;
 
 import meridia.utils.Filter;
 import meridia.utils.Filters;
+import meridia.views.ImageProcessorView;
 
 import java.io.IOException;
 import java.io.File;
 
 public class PresentationModel {
 
+    private ImageProcessorView imageProcessorView;
     private File file;
 
     public void setFilter(Filter filter) {
         try {
-        switch (filter) {
-            case BW -> Filters.setBlackWhiteFilter(file);
-            case GRAY -> Filters.setGrayscaleFilter(file);
-            case PIXEL -> Filters.setPixelFilter(file);
-        }
+            switch (filter) {
+                case BW -> Filters.setBlackWhiteFilter(file);
+                case GRAY -> Filters.setGrayscaleFilter(file);
+                case PIXEL -> Filters.setPixelFilter(file);
+            }
+            this.imageProcessorView.setImageWithFilter();
         } catch (IOException ex) {
             System.out.println("cannot read file");
             System.out.println(ex.getMessage());
@@ -29,5 +32,9 @@ public class PresentationModel {
 
     public void setFile(File file) {
         this.file = file;
+    }
+
+    public void setImageProcessorView(ImageProcessorView imageProcessorView) {
+        this.imageProcessorView = imageProcessorView;
     }
 }
