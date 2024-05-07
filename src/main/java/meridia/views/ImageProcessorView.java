@@ -85,8 +85,6 @@ public class ImageProcessorView extends GridPane implements ViewMixin {
         downloadButton.getStyleClass().add("main-button");
         downloadButton.getStyleClass().add("pink-button");
 
-
-
         getStyleClass().add("image-view");
         uploadButton.setText("Select Image");
         clearButton.setText("Clear Image");
@@ -102,9 +100,13 @@ public class ImageProcessorView extends GridPane implements ViewMixin {
                 model.setFile(file);
                 imageView.setImage(new Image(String.valueOf(model.getFile().toURI())));
             }
+            imageArea.getChildren().remove(uploadButton);
         });
         downloadButton.setOnMouseClicked(e -> downloadImage(this.primaryStage, model));
-        clearButton.setOnMouseClicked(e -> imageView.setImage(placeholder));
+        clearButton.setOnMouseClicked(e -> {
+            imageArea.getChildren().add(uploadButton);
+            imageView.setImage(placeholder);
+        });
     }
 
     public void setImageWithFilter() {
