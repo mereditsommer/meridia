@@ -11,6 +11,8 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class FilesystemAccess {
@@ -56,9 +58,11 @@ public class FilesystemAccess {
         fileChooser.setInitialDirectory(
                 new File(System.getProperty("user.home"))
         );
+        List<String> extList = new ArrayList<>();
+        extList.add("*.jpg");
+        extList.add("*.png");
         fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("JPG", "*.jpg"),
-                new FileChooser.ExtensionFilter("PNG", "*.png")
+                new FileChooser.ExtensionFilter("JPG", extList)
         );
     }
 
