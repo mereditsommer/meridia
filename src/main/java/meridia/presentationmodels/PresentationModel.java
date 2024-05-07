@@ -17,20 +17,16 @@ public class PresentationModel {
 
     private File file;
 
-    public PresentationModel() throws IOException {
-
-    }
-
     public void setFilter(Filter filter) {
+        try {
         switch (filter) {
             case BW -> Filters.setBlackWhiteFilter(file);
             case GRAY -> Filters.setGrayscaleFilter(file);
             case PIXEL -> Filters.setPixelFilter(file);
         }
-    }
-
-    public void upload() {
-
+        } catch (IOException exception) {
+            System.out.println("cannot read file");
+        }
     }
 
     public File getFile() {

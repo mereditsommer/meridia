@@ -25,11 +25,11 @@ public class FiltersView extends VBox implements ViewMixin {
     @Override
     public void layoutControls() {
         getStyleClass().add("toolbar-view");
-        blackWhiteButton.setDisable(true);
+       // blackWhiteButton.setDisable(true);
         blackWhiteButton.setText("Black and White");
-        grayButton.setDisable(true);
+        //grayButton.setDisable(true);
         grayButton.setText("Grayscale");
-        pixelButton.setDisable(true);
+        //pixelButton.setDisable(true);
         pixelButton.setText("Pixelated");
 
         this.setSpacing(32);
