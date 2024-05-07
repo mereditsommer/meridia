@@ -16,10 +16,8 @@ public class Filters {
                 int r = color.getRed();
                 int g = color.getGreen();
                 int b = color.getBlue();
-                // lightness is the average of the largest and smallest color components
                 int max = Math.max(r, Math.max(g, b));
                 int min = Math.min(r, Math.min(g, b));
-                // lightness is the average of the largest and smallest color components
                 int lum = (max + min) / 2;
                 Color newColor;
                 if (lum > 127) {

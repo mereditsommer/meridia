@@ -38,7 +38,7 @@ public class ApplicationUI extends BorderPane implements ViewMixin {
     }
 
     public void initializeControls() {
-        header = new Header(model);
+        header = new Header();
         imageProcessorView = new ImageProcessorView(model, primaryStage);
         filtersView = new FiltersView(model);
         splitView = new HBox(imageProcessorView, filtersView);
