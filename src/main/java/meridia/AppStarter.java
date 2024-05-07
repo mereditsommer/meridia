@@ -18,7 +18,7 @@ public class AppStarter extends Application {
 
 		Scene scene = new Scene(rootPanel);
 
-		primaryStage.setTitle("ImageService");
+		primaryStage.setTitle("Meridia");
 
 		primaryStage.setScene(scene);
 		primaryStage.setWidth(1024);

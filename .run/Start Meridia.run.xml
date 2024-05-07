@@ -1,9 +1,9 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Start TwittrFX" type="Application" factoryName="Application">
+  <configuration default="false" name="Start Meridia" type="Application" factoryName="Application">
     <option name="ALTERNATIVE_JRE_PATH" value="zulu-19" />
     <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
     <option name="MAIN_CLASS_NAME" value="meridia.AppStarter" />
-    <module name="meredia" />
+    <module name="meridia" />
     <extension name="coverage">
       <pattern>
         <option name="PATTERN" value="meridia.presentationmodels.*" />
