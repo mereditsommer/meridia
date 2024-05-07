@@ -1,18 +1,9 @@
 package meridia.views;
 
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.geometry.Insets;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import meridia.presentationmodels.PresentationModel;
-
-import java.awt.TextField;
-import java.awt.image.BufferedImage;
-import java.io.FileInputStream;
 
 public class Header extends HBox implements ViewMixin {
     private ImageView imgView;
