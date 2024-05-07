@@ -105,4 +105,12 @@ public class Filters {
 
         return new Color(avgRed, avgGreen, avgBlue);
     }
+
+    public static String getExtension(Filter filter) {
+        return switch (filter){
+            case BW -> "bw";
+            case GRAY -> "gray";
+            case PIXEL -> "pixel";
+        };
+    }
 }

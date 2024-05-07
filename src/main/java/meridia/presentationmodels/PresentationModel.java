@@ -11,6 +11,7 @@ public class PresentationModel {
 
     private ImageProcessorView imageProcessorView;
     private File file;
+    private Filter activeFilter;
 
     public void setFilter(Filter filter) {
         try {
@@ -19,6 +20,7 @@ public class PresentationModel {
                 case GRAY -> Filters.setGrayscaleFilter(file);
                 case PIXEL -> Filters.setPixelFilter(file);
             }
+            this.activeFilter = filter;
             this.imageProcessorView.setImageWithFilter();
         } catch (IOException ex) {
             System.out.println("cannot read file");
@@ -36,5 +38,9 @@ public class PresentationModel {
 
     public void setImageProcessorView(ImageProcessorView imageProcessorView) {
         this.imageProcessorView = imageProcessorView;
+    }
+
+    public Filter getActiveFilter() {
+        return activeFilter;
     }
 }

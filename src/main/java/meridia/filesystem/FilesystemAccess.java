@@ -1,7 +1,9 @@
 package meridia.filesystem;
+
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import meridia.presentationmodels.PresentationModel;
+import meridia.utils.Filters;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -17,28 +19,29 @@ public class FilesystemAccess {
     static final FileChooser fileChooser = new FileChooser();
     private static final Desktop desktop = Desktop.getDesktop();
 
-    public static File readFile(Stage stage){
+    public static File readFile(Stage stage) {
         configureFileChooser();
         return fileChooser.showOpenDialog(stage);
     }
 
-    public static void downloadImage(Stage stage, PresentationModel model){
-
-            FileChooser fileChooser = new FileChooser();
-            fileChooser.setTitle("Save Image");
-            File file = fileChooser.showSaveDialog(stage);
-            File fileOld = model.getFile();
-            String format = fileOld.getName().split("\\.")[1];
-            URL imageURL = FilesystemAccess.class.getResource("/meridia." + format);
-            if (file != null && imageURL != null) {
-                try {
-                    BufferedImage buffer = ImageIO.read(imageURL);
-                    ImageIO.write(buffer, format, file);
-                } catch (IOException ex) {
-                    System.out.println(ex.getMessage());
-                }
+    public static void downloadImage(Stage stage, PresentationModel model) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Save Image");
+        String[] fileNameParts = model.getFile().getName().split("\\.");
+        String name = fileNameParts[0];
+        String format = fileNameParts[1];
+        fileChooser.setInitialFileName(name + "_meridia-" + Filters.getExtension(model.getActiveFilter()) + "." + format);
+        File file = fileChooser.showSaveDialog(stage);
+        URL imageURL = FilesystemAccess.class.getResource("/meridia." + format);
+        if (file != null && imageURL != null) {
+            try {
+                BufferedImage buffer = ImageIO.read(imageURL);
+                ImageIO.write(buffer, format, file);
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
             }
         }
+    }
 
     private static void openFile(File file) {
         try {

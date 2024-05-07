@@ -26,7 +26,7 @@ public class ImageProcessorView extends GridPane implements ViewMixin {
     private VBox col;
     private Label mainTitle;
     private Label subTitle;
-    private Image placeholder ;
+    private Image placeholder;
     private ImageView imageView;
     private Button uploadButton;
     private Button clearButton;
@@ -36,7 +36,6 @@ public class ImageProcessorView extends GridPane implements ViewMixin {
     private StackPane imageArea;
 
     private Stage primaryStage;
-    final FileChooser fileChooser = new FileChooser();
 
     public ImageProcessorView(PresentationModel model) {
         this.model = model;
@@ -66,12 +65,12 @@ public class ImageProcessorView extends GridPane implements ViewMixin {
         imageView.setPreserveRatio(true);
 
         imageArea = new StackPane();
-        imageArea.getChildren().addAll(imageView,uploadButton);
+        imageArea.getChildren().addAll(imageView, uploadButton);
         StackPane.setAlignment(uploadButton, Pos.CENTER);
         imageArea.setAlignment(Pos.CENTER);
 
-        tools = new HBox(clearButton,downloadButton);
-        col = new VBox(mainTitle,subTitle,imageArea,tools);
+        tools = new HBox(clearButton, downloadButton);
+        col = new VBox(mainTitle, subTitle, imageArea, tools);
     }
 
     @Override
@@ -86,8 +85,9 @@ public class ImageProcessorView extends GridPane implements ViewMixin {
     @Override
     public void setupEventHandlers() {
         uploadButton.setOnMouseClicked(e -> {
-            model.setFile(readFile(this.primaryStage));
-            if (model.getFile() != null) {
+            File file = readFile(this.primaryStage);
+            if (file != null) {
+                model.setFile(file);
                 imageView.setImage(new Image(String.valueOf(model.getFile().toURI())));
             }
         });
