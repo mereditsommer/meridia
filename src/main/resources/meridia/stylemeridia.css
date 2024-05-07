@@ -34,9 +34,14 @@
     -fx-effect: dropshadow(gaussian, rgba(138, 10, 203, 0.50), 2.6, 0.5, 2.0, 2.0);
 }
 
+.main-button:hover{
+    -fx-background-color: #9406D2;
+    -fx-text-fill: white;
+}
+
 .pink-button {
     -fx-background-color: #9406D2;
-    -text-color: white!important;
+    -fx-text-fill: white;
 }
 
 .filter-button{
@@ -56,4 +61,9 @@
 .imageStyle{
     -fx-border-radius: 50px;
     -fx-max-height: 200px;
+}
+
+.h1-style{
+    -fx-font-weight: 700;
+    -fx-font-size: 24px;
 }

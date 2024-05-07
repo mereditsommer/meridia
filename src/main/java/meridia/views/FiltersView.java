@@ -31,7 +31,9 @@ public class FiltersView extends VBox implements ViewMixin {
     @Override
     public void layoutControls() {
         getStyleClass().add("toolbar-view");
-
+        blackWhiteButton.getStyleClass().add("main-button");
+        grayButton.getStyleClass().add("main-button");
+        pixelButton.getStyleClass().add("main-button");
         blackWhiteButton.getStyleClass().add("filter-button");
         grayButton.getStyleClass().add("filter-button");
         pixelButton.getStyleClass().add("filter-button");

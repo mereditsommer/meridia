@@ -54,7 +54,8 @@ public class ImageProcessorView extends GridPane implements ViewMixin {
     @Override
     public void initializeControls() {
         mainTitle = new Label("Image Processor");
-        subTitle = new Label("Start by adding an image for processing.");
+        mainTitle.getStyleClass().add("h1-style");
+        subTitle = new Label("Select your image, choose a filter and download the processed image.");
         uploadButton = new Button();
         clearButton = new Button();
         downloadButton = new Button();
