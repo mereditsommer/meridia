@@ -1,11 +1,15 @@
 package meridia.views;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import meridia.presentationmodels.PresentationModel;
 import meridia.utils.Filter;
 
 public class FiltersView extends VBox implements ViewMixin {
     private final PresentationModel model;
+    private Label label;
+    private  Button originalButton;
     private Button blackWhiteButton;
     private Button grayButton;
     private Button pixelButton;
@@ -17,23 +21,23 @@ public class FiltersView extends VBox implements ViewMixin {
 
     @Override
     public void initializeControls() {
-        blackWhiteButton = new Button();
-        grayButton = new Button();
-        pixelButton = new Button();
+        originalButton = new Button("Original");
+        blackWhiteButton = new Button("Black and White");
+        grayButton = new Button("Grayscale");
+        pixelButton = new Button("Pixelated");
+        label = new Label("Choose a filter to apply");
     }
 
     @Override
     public void layoutControls() {
         getStyleClass().add("toolbar-view");
-       // blackWhiteButton.setDisable(true);
-        blackWhiteButton.setText("Black and White");
-        //grayButton.setDisable(true);
-        grayButton.setText("Grayscale");
-        //pixelButton.setDisable(true);
-        pixelButton.setText("Pixelated");
 
-        this.setSpacing(32);
-        this.getChildren().addAll(blackWhiteButton, grayButton, pixelButton);
+        blackWhiteButton.getStyleClass().add("filter-button");
+        grayButton.getStyleClass().add("filter-button");
+        pixelButton.getStyleClass().add("filter-button");
+
+        this.setSpacing(18);
+        this.getChildren().addAll(label, blackWhiteButton, grayButton, pixelButton);
     }
 
     @Override

@@ -33,7 +33,7 @@ public class ApplicationUI extends BorderPane implements ViewMixin {
     }
 
     public void initializeSelf() {
-        String stylesheet = getClass().getResource("../style.css").toExternalForm();
+        String stylesheet = getClass().getResource("../stylemeridia.css").toExternalForm();
         getStylesheets().add(stylesheet);
     }
 

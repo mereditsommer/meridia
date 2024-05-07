@@ -55,6 +55,7 @@ public class ImageProcessorView extends GridPane implements ViewMixin {
 
         placeholder = new Image("img/placeholder.jpg");
         imageView = new ImageView(placeholder);
+        imageView.getStyleClass().add("imageStyle");
 
         imageArea = new StackPane();
         imageArea.getChildren().addAll(imageView,uploadButton);
@@ -64,15 +65,23 @@ public class ImageProcessorView extends GridPane implements ViewMixin {
 
 
         tools = new HBox(clearButton,downloadButton);
+        tools.setAlignment(Pos.CENTER);
+        tools.setSpacing(40);
         col = new VBox(mainTitle,subTitle,imageArea,tools);
+        col.setSpacing(10);
     }
 
     @Override
     public void layoutControls() {
+        uploadButton.getStyleClass().add("main-button");
+        clearButton.getStyleClass().add("main-button");
+        downloadButton.getStyleClass().add("main-button");
+        downloadButton.getStyleClass().add("pink-button");
+
 
 
         getStyleClass().add("image-view");
-        uploadButton.setText("Upload your Image");
+        uploadButton.setText("Select Image");
         clearButton.setText("Clear Image");
         downloadButton.setText("Download Image");
         getChildren().add(col);
