@@ -1,9 +1,13 @@
 package meridia.views;
 
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -17,12 +21,16 @@ public class ImageProcessorView extends GridPane implements ViewMixin {
     private VBox col;
     private Label mainTitle;
     private Label subTitle;
-  //  private Image image = new Image(getClass().getResourceAsStream("placeholder.png"));
+    private Image placeholder ;
+    private ImageView imageView;
     private ImageProcessorView imageBox;
     private Button uploadButton;
     private Button clearButton;
     private Button downloadButton;
     private HBox tools;
+
+    private StackPane imageArea;
+
     private Stage primaryStage;
     final FileChooser fileChooser = new FileChooser();
 
@@ -41,14 +49,22 @@ public class ImageProcessorView extends GridPane implements ViewMixin {
     public void initializeControls() {
         mainTitle = new Label("Image Processor");
         subTitle = new Label("Start by adding an image for processing.");
-
-       // imageBox = new ImageView();
         uploadButton = new Button();
         clearButton = new Button();
         downloadButton = new Button();
 
+        placeholder = new Image("img/placeholder.jpg");
+        imageView = new ImageView(placeholder);
+
+        imageArea = new StackPane();
+        imageArea.getChildren().addAll(imageView,uploadButton);
+        StackPane.setAlignment(uploadButton, Pos.CENTER);
+        imageArea.setAlignment(Pos.CENTER);
+
+
+
         tools = new HBox(clearButton,downloadButton);
-        col = new VBox(mainTitle,subTitle,uploadButton,tools);
+        col = new VBox(mainTitle,subTitle,imageArea,tools);
     }
 
     @Override
