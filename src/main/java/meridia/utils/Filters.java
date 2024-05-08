@@ -41,7 +41,6 @@ public class Filters {
                 int b = color.getBlue();
                 int max = Math.max(r, Math.max(g, b));
                 int min = Math.min(r, Math.min(g, b));
-                // lightness is the average of the largest and smallest color components
                 int lum = (max + min) / 2;
                 Color newColor = new Color(lum, lum, lum);
                 img.setRGB(w, h, newColor.getRGB());

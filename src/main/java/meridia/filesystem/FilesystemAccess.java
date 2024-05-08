@@ -6,7 +6,6 @@ import meridia.presentationmodels.PresentationModel;
 import meridia.utils.Filters;
 
 import javax.imageio.ImageIO;
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -17,7 +16,6 @@ import java.util.List;
 
 public class FilesystemAccess {
     static final FileChooser fileChooser = new FileChooser();
-    private static final Desktop desktop = Desktop.getDesktop();
 
     public static File readFile(Stage stage) {
         configureFileChooser();
@@ -40,14 +38,6 @@ public class FilesystemAccess {
             } catch (IOException ex) {
                 System.out.println(ex.getMessage());
             }
-        }
-    }
-
-    private static void openFile(File file) {
-        try {
-            desktop.open(file);
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
         }
     }
 

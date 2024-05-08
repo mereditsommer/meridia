@@ -9,7 +9,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import meridia.filesystem.FilesystemAccess;
 import meridia.presentationmodels.PresentationModel;
@@ -32,16 +31,8 @@ public class ImageProcessorView extends GridPane implements ViewMixin {
     private Button clearButton;
     private Button downloadButton;
     private HBox tools;
-
     private StackPane imageArea;
-
     private Stage primaryStage;
-
-    public ImageProcessorView(PresentationModel model) {
-        this.model = model;
-        model.setImageProcessorView(this);
-        init();
-    }
 
     public ImageProcessorView(PresentationModel model, Stage primaryStage) {
         this.model = model;
@@ -66,7 +57,6 @@ public class ImageProcessorView extends GridPane implements ViewMixin {
         imageView.setPreserveRatio(true);
         imageView.setFitHeight(350);
 
-
         imageArea = new StackPane();
         imageArea.getChildren().addAll(imageView, uploadButton);
         StackPane.setAlignment(uploadButton, Pos.CENTER);
@@ -85,8 +75,8 @@ public class ImageProcessorView extends GridPane implements ViewMixin {
         clearButton.getStyleClass().add("main-button");
         downloadButton.getStyleClass().add("main-button");
         downloadButton.getStyleClass().add("pink-button");
-
         getStyleClass().add("image-view");
+
         uploadButton.setText("Select Image");
         clearButton.setText("Clear Image");
         downloadButton.setText("Download Image");
